@@ -1,0 +1,36 @@
+<div class="outer-container">
+    <div class="inner-container">
+        <div class="container d-flex flex-column justify-content-center align-items-start">
+            <div class="row row-cols-auto">
+                <div class="col">
+                    <button type="button" class="btn btn-secondary" (click)="clearNumbers()">Clear Numbers</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-secondary" (click)="generateNumber()">Add Number</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-secondary" (click)="sumNumbers()">Sum Numbers</button>
+                </div>
+            </div>
+            <ng-container *ngIf="numbers && numbers.length > 0; else noNumbers">
+                <div class="row row-cols-auto mt-5">
+                    <div *ngFor="let number of numbers else noNumbers" class="col">
+                        <span class="badge bg-secondary">
+                            {{number}}
+                        </span>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-template #noNumbers>
+                <p class="mt-5">No numbers available. Click on "Add Number" to generate some.</p>
+            </ng-template>
+            <div class="mt-5">
+                <span>Count: {{numbers.length}}</span>
+            </div>
+            <div>
+                <span>Sum: {{sum}}</span>
+            </div>
+        </div>
+    </div>
+</div>
