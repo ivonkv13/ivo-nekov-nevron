@@ -5,6 +5,10 @@
       {
         "Path": "InterviewTask.Server\\InterviewTask.Server.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "interviewtask.client\\interviewtask.client.esproj",
+        "Action": "Start"
       }
     ]
   }

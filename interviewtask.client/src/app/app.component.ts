@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalculatorService } from '../shared/services/calculator.service';
 import { ClearNumbersResponse, SumNumbersResponse } from '../models/app-models';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,17 @@ export class AppComponent implements OnInit {
 
   numbers: number[] = [];
   sum: number = 0;
+  title = 'interviewtask.client';
+
+  private destroyed$ = new Subject<void>();
 
   ngOnInit() {
     this.getNumbers();
   }
 
   getNumbers(): void {
-    this.calcService.getNumbers().subscribe({
+    this.calcService.getNumbers().pipe(takeUntil(this.destroyed$))
+      .subscribe({
       next: res => {
         this.numbers = res.numbers
         console.log(res.numbers)
@@ -29,7 +34,8 @@ export class AppComponent implements OnInit {
   }
 
   generateNumber(): void {
-    this.calcService.generateNumber().subscribe({
+    this.calcService.generateNumber().pipe(takeUntil(this.destroyed$))
+    .subscribe({
       next: res => {
         this.numbers = res.numbers
       } ,
@@ -38,7 +44,8 @@ export class AppComponent implements OnInit {
   }
 
   clearNumbers(): void {
-    this.calcService.clearNumbers().subscribe({
+    this.calcService.clearNumbers().pipe(takeUntil(this.destroyed$))
+    .subscribe({
       next: (res: ClearNumbersResponse) => {
         this.numbers = res.numbers;
         this.sum = res.sum;
@@ -48,7 +55,8 @@ export class AppComponent implements OnInit {
   }
 
   sumNumbers(): void {
-    this.calcService.sumNumbers().subscribe({
+    this.calcService.sumNumbers().pipe(takeUntil(this.destroyed$))
+    .subscribe({
       next: (res: SumNumbersResponse) => {
         this.sum = res.sum;
       },
@@ -56,5 +64,4 @@ export class AppComponent implements OnInit {
     })
   }
 
-  title = 'interviewtask.client';
 }

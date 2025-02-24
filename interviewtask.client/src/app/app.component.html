@@ -14,7 +14,7 @@
             </div>
             <ng-container *ngIf="numbers && numbers.length > 0; else noNumbers">
                 <div class="row row-cols-auto mt-5">
-                    <div *ngFor="let number of numbers else noNumbers" class="col">
+                    <div *ngFor="let number of numbers" class="col">
                         <span class="badge bg-secondary">
                             {{number}}
                         </span>
