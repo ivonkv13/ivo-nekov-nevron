@@ -1,0 +1,25 @@
+﻿:host {
+    max-width: 1280px;
+    padding: 2rem;
+    text-align: center;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+  }
+  
+  .outer-container {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center;     /* centers vertically */
+    height: 100vh;           /* full viewport height */
+  }
+  
+  .inner-container {
+    display: flex;
+    flex-direction: column;  /* stacks inner items vertically */
+    align-items: center;     /* center inner items horizontally */
+    text-align: center;      /* center inner text */
+    /* Optionally, add padding or a max-width if needed */
+  }
