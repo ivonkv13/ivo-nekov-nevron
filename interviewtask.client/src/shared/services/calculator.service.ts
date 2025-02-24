@@ -11,7 +11,7 @@ import { ClearNumbersResponse, GenerateNumbersResponse, GetNumbersResponse, SumN
   providedIn: 'root',
 })
 export class CalculatorService {
-  private baseUrl = 'https://localhost:32773/api/Calculator';
+  private baseUrl = 'https://localhost:32777/api/Calculator';
 
   constructor(private http: HttpClient) {}
 
